@@ -1,4 +1,4 @@
-package com.test.basics;
+package com.test.collections;
 
 public class EqualsTest {
 
