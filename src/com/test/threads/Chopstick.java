@@ -6,7 +6,7 @@ public class Chopstick {
 
 	ReentrantLock lock;
 	
-	public boolean pickup() {
+	public boolean pickup() { 
 		return lock.tryLock();
 	}
 
