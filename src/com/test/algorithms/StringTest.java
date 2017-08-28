@@ -1,7 +1,6 @@
 package com.test.algorithms;
 
 import java.util.Arrays;
-import java.util.EmptyStackException;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -32,73 +31,15 @@ public class StringTest {
 		
 		//URLify
 		//test.urlify("Mr John Smith   ", 13);
-		//test matching braces
-		test.matchBraces("(()(())))");
 		
-		test.matchBracesStack("(()(())))");
 		//String compress
-	    //test.compress("aabccccdeeggg");
+		test.compress("aabccccdeeggg");
 		
-		//test.reverse("Hello");
+		test.reverse("Hello");
 		
-		//test.reverseSentence("Hello World");
+		test.reverseSentence("Hello World");
 		int[] intArray = new int[] {1,3,4,2,3};
-		//test.sumOfThree(intArray, 6);
-	}
-	
-	private boolean matchBracesStack(String string) {
-
-		boolean result = false;
-		Stack braceStack = new Stack();
-		
-		for (int i=0;i<string.length(); i++) {			
-			if (string.charAt(i) == '(') {
-				braceStack.push(string.charAt(i));
-			} else if (string.charAt(i)== ')') {
-				try {
-					braceStack.pop();
-				} catch (EmptyStackException e) {
-					System.out.println("Not matched...");
-					result = false;
-					return result;
-				}
-			}			
-		}
-		
-		if (braceStack.isEmpty()) {
-			System.out.println("Matched!!");
-			result = true;
-		} else {
-			System.out.println("Not matched...");
-			result = false;
-		}
-		
-		return result;
-	}
-
-	private void matchBraces(String string) {
-		// TODO Auto-generated method stub
-		
-		if (string.length() <2) {
-			System.out.println("not matched.");
-		}
-		int openCtr=0; 
-		int closeCtr = 0;
-		for (int i=0;i<string.length(); i++) {
-			
-			if (string.charAt(i) == '(') {
-				openCtr ++;
-			} else if (string.charAt(i)== ')') {
-				closeCtr++;
-			}			
-		}
-		
-		if (openCtr != closeCtr) {
-			System.out.println("Not matched...");
-		} else {
-			System.out.println("Matched!!");
-		}
-		
+		test.sumOfThree(intArray, 6);
 	}
 
 	private void sumOfThree(int[] intArray, int sum) {
