@@ -30,6 +30,10 @@ public class ExecutorThreadTest {
 
 		});
 
+		stopExecutor(executor);
+	}
+
+	private void stopExecutor(ExecutorService executor) {
 		// Shutdown the executor, otherwise it will continue running.
 		try {
 			executor.shutdown();
@@ -63,21 +67,17 @@ public class ExecutorThreadTest {
 				return "Error";
 			}
 
-		}
-
-		);
+		});
 
 		System.out.println("future completed? " + future.isDone());
 
 		try {
-			// String result = future.get(); //blocks and waits for execution to
-			// complete
+			
+			//blocks and waits for execution to complete
+			// String result = future.get(); 
 
-			String result = future.get(1, TimeUnit.SECONDS); // blocks and waits
-																// for only 1
-																// second and
-																// throws
-																// timeoutexception
+			// blocks and waits for only 1 second and throws timeoutexception
+			String result = future.get(1, TimeUnit.SECONDS); 
 			System.out.println("future completed now? " + future.isDone());
 			System.out.println("result: " + result);
 
@@ -92,23 +92,7 @@ public class ExecutorThreadTest {
 			e.printStackTrace();
 		}
 
-		// Shutdown the executor, otherwise it will continue running.
-		try {
-			executor.shutdown();
-			executor.awaitTermination(2, TimeUnit.SECONDS);
-			System.out.println("Try Shutdown");
-
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-
-		} finally {
-			if (!executor.isTerminated()) {
-				System.err.println("Finally...cancel non-finished tasks");
-			}
-			executor.shutdownNow();
-			System.out.println("shutdown finished");
-		}
+		stopExecutor(executor);
 
 	}
 
