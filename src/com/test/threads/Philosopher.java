@@ -15,7 +15,12 @@ public class Philosopher implements Runnable {
 		
 		left.pickup();
 		right.pickup();
-		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		right.putDown();
 		left.putDown();
 		
@@ -33,7 +38,7 @@ public class Philosopher implements Runnable {
 	
 	
 	
-	public void main(String ...strings) {
+	public static void main(String ...strings) {
 		
 		Philosopher hungryPhil1 = new Philosopher(new Chopstick(), new Chopstick());
 		Philosopher hungryPhil2 = new Philosopher(new Chopstick(), new Chopstick());
